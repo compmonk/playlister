@@ -9,26 +9,11 @@ import subprocess
 import re
 from json import loads
 from urllib import quote
-
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    INFO = '\033[92m'
-    WARNING = '\033[93m'
-    ERROR = '\033[91m'
-    RESET = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+from colors import bcolors
     
 def duration(file, precision = 3):
-  result = subprocess.Popen(' '.join(
-  													['ffprobe',
-  													'-print_format json', 
-  													'-show_format', 
-  													re.escape(file)]),
-  													stdout = subprocess.PIPE,
-  													stderr = subprocess.STDOUT,
-  													shell = True)
+  result = subprocess.Popen(' '.join(['ffprobe', '-print_format json', '-show_format', re.escape(file)]),
+  													stdout = subprocess.PIPE, stderr = subprocess.STDOUT, shell = True)
   output = ''.join(result.stdout.readlines())
   meta = loads(output[output.find('{') : output.rfind('}') + 1])
   duration = float(meta['format']['duration'])
