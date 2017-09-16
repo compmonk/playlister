@@ -34,8 +34,8 @@ def create(directory, name, verbose):
 		error("No videos found")
 
 	try:
-		info("Creating playlist {}".format(name + '.xspf'), verbose = verbose)
-		playlist = open(directory + '/' + name + '.xspf', 'w')
+		info("Creating playlist {}".format(osp.abspath(directory + os.sep + name + '.xspf')), verbose = verbose)
+		playlist = open(osp.abspath(directory + os.sep + name + '.xspf'), 'w')
 	except IOError:
 		error("Permission denied")
 
