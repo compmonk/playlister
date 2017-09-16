@@ -26,7 +26,7 @@ def create(directory, name, verbose):
 	files = [osp.relpath(osp.join(dirpath, file), directory) for (dirpath, dirnames, filenames) in os.walk(directory) for file in filenames]
 	info("Finding video files", verbose)
 	videos = filter(is_video, files)
-	videos.sort()
+	videos.sort(key = lambda file: int(filter(str.isdigit, file)))
 	number_of_videos = len(videos)
 	info("{} video/s found".format(number_of_videos), verbose = verbose)
 
