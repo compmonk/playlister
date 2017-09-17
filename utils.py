@@ -28,7 +28,7 @@ def natural_sort(x):
 def error(message):
     print >> sys.stderr, bcolors.ERROR + "[ERROR] " + bcolors.RESET + "{}" \
         .format(message)
-    exit(0)
+    sys.exit(0)
 
 
 def info(message, verbose=True):

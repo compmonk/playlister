@@ -4,9 +4,6 @@
 import argparse
 import os
 import os.path as osp
-import sys
-import subprocess
-import re
 import urllib
 
 from utils import duration, info, error, warning, natural_sort
@@ -18,7 +15,7 @@ def validate(directory):
 
 
 def is_video(file):
-    video_extensions = ['.mp4']
+    video_extensions = ['.mp4', '.mkv']
     return osp.splitext(file)[1] in video_extensions
 
 
